@@ -1,0 +1,9 @@
+harga = float(input("Masukan Harga Barang"))
+
+if harga >= 100000:
+    diskon = 0.10 * harga
+else: 
+    diskon = 0
+
+total_bayar = harga - diskon
+print("Total Bayar:", total_bayar)
