@@ -1,0 +1,6 @@
+nilai = float(input("masukan nilai 1: "))
+nilai = float(input("masukan nilai 2: "))
+nilai = float(input("masukan nilai 3: "))
+
+rata_rata = (nilai + nilai + nilai) / 3
+print("rata-rata:", rata_rata)
