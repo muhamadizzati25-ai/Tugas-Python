@@ -1,0 +1,59 @@
+def konversi_nilai(huruf):
+    huruf = huruf.upper()
+    if huruf == 'A':
+        return 4.0
+    elif huruf == 'B':
+        return 3.0
+    elif huruf == 'C':
+        return 2.0
+    elif huruf == 'D':
+        return 1.0
+    else:
+        return 0.0 # Nilai E atau input tidak valid dianggap 0
+
+jumlah_mahasiswa = int(input("Masukkan jumlah mahasiswa: "))
+
+data_kelas = []
+total_ipk_seluruh_kelas = 0.0
+
+for i in range(jumlah_mahasiswa):
+    print(f"\nNama mahasiswa ke-{i+1}: ", end="")
+    nama = input()
+    jumlah_mk = int(input("Jumlah mata kuliah: "))
+    
+    total_sks = 0
+    total_bobot_nilai = 0.0
+    
+    for j in range(jumlah_mk):
+        print(f"\nMata kuliah {j+1}: ", end="")
+        nama_mk = input()
+        sks = int(input("SKS: "))
+        nilai_huruf = input("Nilai: ")
+        
+        bobot_angka = konversi_nilai(nilai_huruf)
+        
+        total_sks += sks
+        total_bobot_nilai += (bobot_angka * sks)
+    
+    if total_sks > 0:
+        ipk = total_bobot_nilai / total_sks
+    else:
+        ipk = 0.0
+        
+    data_kelas.append({"nama": nama, "ipk": ipk})
+    
+    total_ipk_seluruh_kelas += ipk
+
+print("\n" + "="*30)
+print("HASIL PERHITUNGAN IPK")
+print("="*30)
+
+for mhs in data_kelas:
+    print(f"Nama : {mhs['nama']}")
+    print(f"IPK  : {mhs['ipk']:.2f}\n")
+
+if jumlah_mahasiswa > 0:
+    rata_rata_kelas = total_ipk_seluruh_kelas / jumlah_mahasiswa
+    print(f"Rata-rata IPK Seluruh Kelas: {rata_rata_kelas:.2f}")
+else:
+    print("Tidak ada data mahasiswa.")
